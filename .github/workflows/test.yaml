@@ -26,6 +26,8 @@ jobs:
           echo ${GITHUB_ENV} &&
           echo ${GITHUB_ACTOR} &&
           echo ${GITHUB_RUN_NUMBER} &&
-          echo ${GITHUB_WORKSPACE} 
+          echo ${GITHUB_WORKSPACE} &&
+          echo ${REGISTRY}
+          cat ${GITHUB_ENV}
 
    
