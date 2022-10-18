@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/opcal-project/containers/eclipse-temurin:11-jre
+FROM ghcr.io/opcal/eclipse-temurin:11-jre
 
 LABEL Author="OPCAL"
 

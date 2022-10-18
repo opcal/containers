@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/opcal-project/containers/eclipse-temurin:11-jre-alpine as build
+FROM rghcr.io/opcal/eclipse-temurin:11-jre as build
 
 ARG CMAK_VERSION
 
@@ -8,7 +8,7 @@ RUN apk --no-cache add unzip \
     && ln -s /cmak-$CMAK_VERSION /cmak \
     && rm -rf /tmp/cmak.zip
 
-FROM registry.gitlab.com/opcal-project/containers/eclipse-temurin:11-jre-alpine
+FROM ghcr.io/opcal/eclipse-temurin:11-jre
 
 LABEL Author="OPCAL"
 
