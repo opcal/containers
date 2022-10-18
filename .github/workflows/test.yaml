@@ -23,9 +23,9 @@ jobs:
           ls -la &&
           which docker &&
           docker --version &&
-          echo ${REGISTRY} &&
-          echo ${github.actor} &&
-          echo ${github.run_number} &&
+          echo ${$GITHUB_ENV} &&
+          echo ${GITHUB_ACTOR} &&
+          echo ${GITHUB_RUN_NUMBER} &&
           echo ${GITHUB_WORKSPACE} 
 
    
