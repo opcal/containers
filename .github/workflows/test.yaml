@@ -1,0 +1,25 @@
+name: test
+
+on:
+  push:
+    tags: ""
+    branches: main
+    paths-ignore:
+      - "**/*.md"
+  pull_request:
+    branches: main
+    paths-ignore:
+      - "**/*.md"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: test
+        run: | 
+          which docker &&
+          docker --version
+
+   
