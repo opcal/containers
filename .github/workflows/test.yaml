@@ -23,7 +23,7 @@ jobs:
           ls -la &&
           which docker &&
           docker --version &&
-          echo ${env.REGISTRY} &&
+          echo ${REGISTRY} &&
           echo ${github.actor} &&
           echo ${github.run_number} &&
           echo ${GITHUB_WORKSPACE} 
