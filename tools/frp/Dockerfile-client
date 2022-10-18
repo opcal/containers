@@ -1,0 +1,17 @@
+FROM registry.gitlab.com/opcal-project/containers/alpine:latest as builder
+
+ARG FRP_VERSION
+
+RUN apk --no-cache add curl tar unzip; \
+    curl -L https://github.com/fatedier/frp/releases/download/${FRP_VERSION}/frp_$(echo $FRP_VERSION | cut -d 'v' -f 2)_linux_amd64.tar.gz -o /tmp/frp.tar.gz ; \
+    tar -xvzf /tmp/frp.tar.gz -C / ; \
+    ln -s /frp_$(echo $FRP_VERSION | cut -d 'v' -f 2)_linux_amd64 /frp ; \
+    chmod -R 777 /frp/frpc
+
+FROM registry.gitlab.com/opcal-project/containers/alpine:latest
+
+WORKDIR /app
+
+COPY --from=builder /frp/frpc /usr/bin
+
+ENTRYPOINT ["/usr/bin/frpc"]

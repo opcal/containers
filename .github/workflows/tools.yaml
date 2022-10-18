@@ -1,0 +1,26 @@
+name: build-tools-images
+
+on:
+  push:
+    branches: 
+      - main
+    paths:
+      - "tools/**"
+      - ".github/workflows/tools.yaml"
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Docker build & push
+        env:
+          CI_DEPLOY_USER: ${{ secrets.CR_NAME }}
+          CI_DEPLOY_PASSWORD: ${{ secrets.CR_PAT }}
+          CI_REGISTRY: ghcr.io
+        run: |
+          apt update && apt install curl &&
+          chmod +x build-bin/build-tools.sh &&
+          build-bin/build-tools.sh

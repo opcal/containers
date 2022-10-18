@@ -1,0 +1,2 @@
+0 0 * * * /usr/sbin/logrotate -f /etc/nginx/nginx-data-logrotate
+#0 0 * * * /usr/sbin/logrotate -f /etc/nginx/nginx-logrotate

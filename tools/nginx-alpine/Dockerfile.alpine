@@ -1,0 +1,19 @@
+FROM nginx:alpine
+
+LABEL Author="OPCAL"
+
+RUN apk update && apk --no-cache add logrotate \
+    && rm -rf /var/cache/apk/*
+
+COPY ${GITHUB_WORKSPACE}/tools/nginx-alpine/conf/nginx-alpine.sh /nginx-alpine.sh
+COPY ${GITHUB_WORKSPACE}/tools/nginx-alpine/conf/nginx-crontab /nginx-crontab
+COPY ${GITHUB_WORKSPACE}/tools/nginx-alpine/conf/nginx-data-logrotate /etc/nginx/
+
+RUN chmod 0644 /etc/nginx/nginx-data-logrotate; \
+    chmod a+x /nginx-alpine.sh; \
+    /usr/bin/crontab /nginx-crontab
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+STOPSIGNAL SIGQUIT
+CMD ["/nginx-alpine.sh"]
