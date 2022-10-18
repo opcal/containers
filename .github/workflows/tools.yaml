@@ -21,6 +21,6 @@ jobs:
           CI_DEPLOY_PASSWORD: ${{ secrets.CR_PAT }}
           CI_REGISTRY: ghcr.io
         run: |
-          apt update && apt install curl &&
+          sudo apt update && sudo apt install curl &&
           chmod +x build-bin/build-tools.sh &&
           build-bin/build-tools.sh
