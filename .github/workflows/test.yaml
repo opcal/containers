@@ -23,7 +23,7 @@ jobs:
           ls -la &&
           which docker &&
           docker --version &&
-          echo ${$GITHUB_ENV} &&
+          echo ${GITHUB_ENV} &&
           echo ${GITHUB_ACTOR} &&
           echo ${GITHUB_RUN_NUMBER} &&
           echo ${GITHUB_WORKSPACE} 
