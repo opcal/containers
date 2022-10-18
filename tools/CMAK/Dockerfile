@@ -2,7 +2,7 @@ FROM ghcr.io/opcal/eclipse-temurin:11-jre as build
 
 ARG CMAK_VERSION
 
-RUN apk --no-cache add unzip \
+RUN apt update && apt install unzip -y \
     && curl -L https://github.com/yahoo/CMAK/releases/download/${CMAK_VERSION}/cmak-${CMAK_VERSION}.zip -o /tmp/cmak.zip \
     && unzip /tmp/cmak.zip -d / \
     && ln -s /cmak-$CMAK_VERSION /cmak \
