@@ -1,4 +1,4 @@
-FROM rghcr.io/opcal/eclipse-temurin:11-jre as build
+FROM ghcr.io/opcal/eclipse-temurin:11-jre as build
 
 ARG CMAK_VERSION
 
