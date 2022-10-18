@@ -11,7 +11,7 @@ FRP_VERSION=$(curl https://api.github.com/repos/fatedier/frp/releases/latest | g
 docker build \
     --build-arg FRP_VERSION=${FRP_VERSION} \
     -t frps:${TAG_VERSION} \
-    -f ${CI_PROJECT_DIR}/tools/frp/Dockerfile-server . --no-cache
+    -f ${GITHUB_WORKSPACE}/tools/frp/Dockerfile-server . --no-cache
 docker image tag frps:${TAG_VERSION} ${CI_REGISTRY}/opcal-project/containers/frps:${FRP_VERSION}
 docker image tag frps:${TAG_VERSION} ${CI_REGISTRY}/opcal-project/containers/frps:latest
 docker push ${CI_REGISTRY}/opcal-project/containers/frps:${FRP_VERSION}
@@ -20,7 +20,7 @@ docker push ${CI_REGISTRY}/opcal-project/containers/frps:latest
 docker build \
     --build-arg FRP_VERSION=${FRP_VERSION} \
     -t frpc:${TAG_VERSION} \
-    -f ${CI_PROJECT_DIR}/tools/frp/Dockerfile-client . --no-cache
+    -f ${GITHUB_WORKSPACE}/tools/frp/Dockerfile-client . --no-cache
 docker image tag frpc:${TAG_VERSION} ${CI_REGISTRY}/opcal-project/containers/frpc:${FRP_VERSION}
 docker image tag frpc:${TAG_VERSION} ${CI_REGISTRY}/opcal-project/containers/frpc:latest
 docker push ${CI_REGISTRY}/opcal-project/containers/frpc:${FRP_VERSION}
