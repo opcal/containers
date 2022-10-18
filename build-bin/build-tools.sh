@@ -3,7 +3,7 @@
 set -e
 
 export TIMESTAMP=$(date +%y.%m.%d.%H.%M)
-
+export LATEST_VERSION=v${PROJECT_VERSION}
 export TAG_VERSION=${GITHUB_RUN_NUMBER}
 
 echo 'current build tag ${TAG_VERSION}'
