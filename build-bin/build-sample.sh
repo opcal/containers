@@ -8,7 +8,7 @@ export TAG_VERSION=${GITHUB_RUN_NUMBER}
 
 echo 'current build tag ${TAG_VERSION}'
 
-docker login -u ${CI_DEPLOY_USER} -p ${CI_DEPLOY_PASSWORD} ${CI_REGISTRY}
+echo ${CI_DEPLOY_PASSWORD} | docker login ${CI_REGISTRY} -u ${CI_DEPLOY_USER} --password-stdin
 
 chmod +x ${GITHUB_WORKSPACE}/sample/00-scripts/**.sh
 

@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/opcal-project/containers/alpine:latest as builder
+FROM ghcr.io/opcal/alpine:latest as builder
 
 ARG FRP_VERSION
 
@@ -8,7 +8,7 @@ RUN apk --no-cache add curl tar unzip; \
     ln -s /frp_$(echo $FRP_VERSION | cut -d 'v' -f 2)_linux_amd64 /frp ; \
     chmod -R 777 /frp/frps
 
-FROM registry.gitlab.com/opcal-project/containers/alpine:latest
+FROM ghcr.io/opcal/alpine:latest
 
 WORKDIR /app
 

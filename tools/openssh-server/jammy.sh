@@ -6,7 +6,7 @@ echo " "
 echo " "
 echo 'build openssh-server-jammy start'
 
-IMAGE=registry.gitlab.com/opcal-project/containers/ubuntu:jammy
+IMAGE=ghcr.io/opcal/ubuntu:jammy
 
 # openssh-server-jammy
 docker build \

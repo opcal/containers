@@ -9,10 +9,11 @@ on:
     paths:
       - "sample/**"
       - ".github/workflows/sample.yaml"
+      - "build-bin/build-sample.sh"
 
 
 jobs:
-  test:
+  images-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

@@ -6,7 +6,7 @@ echo " "
 echo " "
 echo 'build openssh-server-focal start'
 
-IMAGE=registry.gitlab.com/opcal-project/containers/ubuntu:focal
+IMAGE=ghcr.io/opcal/ubuntu:focal
 
 # openssh-server-focal
 docker build \
