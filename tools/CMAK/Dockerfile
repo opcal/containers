@@ -14,8 +14,6 @@ LABEL Author="OPCAL"
 
 COPY --from=build /cmak /cmak
 
-RUN apk --no-cache add bash
-
 WORKDIR /cmak
 
 ENTRYPOINT ["/cmak/bin/cmak", "-Dpidfile.path=/dev/null", "-Dapplication.home=/cmak", ""]
