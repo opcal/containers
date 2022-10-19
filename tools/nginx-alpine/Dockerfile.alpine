@@ -5,9 +5,9 @@ LABEL Author="OPCAL"
 RUN apk update && apk --no-cache add logrotate \
     && rm -rf /var/cache/apk/*
 
-COPY ${GITHUB_WORKSPACE}/tools/nginx-alpine/conf/nginx-alpine.sh /nginx-alpine.sh
-COPY ${GITHUB_WORKSPACE}/tools/nginx-alpine/conf/nginx-crontab /nginx-crontab
-COPY ${GITHUB_WORKSPACE}/tools/nginx-alpine/conf/nginx-data-logrotate /etc/nginx/
+COPY ${PROJECT_DIR}/tools/nginx-alpine/conf/nginx-alpine.sh /nginx-alpine.sh
+COPY ${PROJECT_DIR}/tools/nginx-alpine/conf/nginx-crontab /nginx-crontab
+COPY ${PROJECT_DIR}/tools/nginx-alpine/conf/nginx-data-logrotate /etc/nginx/
 
 RUN chmod 0644 /etc/nginx/nginx-data-logrotate; \
     chmod a+x /nginx-alpine.sh; \

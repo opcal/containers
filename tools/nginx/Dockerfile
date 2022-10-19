@@ -9,8 +9,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
     && apt-get -y autoremove \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ${GITHUB_WORKSPACE}/tools/nginx/conf/nginx-crontab /etc/cron.d/nginx-crontab
-COPY ${GITHUB_WORKSPACE}/tools/nginx/conf/nginx-data-logrotate /etc/nginx/
+COPY ${PROJECT_DIR}/tools/nginx/conf/nginx-crontab /etc/cron.d/nginx-crontab
+COPY ${PROJECT_DIR}/tools/nginx/conf/nginx-data-logrotate /etc/nginx/
 
 RUN chmod 0644 /etc/cron.d/nginx-crontab; \
     crontab /etc/cron.d/nginx-crontab; \

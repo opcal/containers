@@ -10,7 +10,7 @@ export COREDNS_TAG=$(curl https://api.github.com/repos/coredns/coredns/releases/
 
 echo ${COREDNS_TAG}
 
-docker build --build-arg COREDNS_TAG -t opcal-coredns:${TAG_VERSION} -f ${GITHUB_WORKSPACE}/tools/coredns/Dockerfile . --no-cache
+docker build --build-arg COREDNS_TAG -t opcal-coredns:${TAG_VERSION} -f ${PROJECT_DIR}/tools/coredns/Dockerfile . --no-cache
 docker image tag opcal-coredns:${TAG_VERSION} ${CI_REGISTRY}/opcal/opcal-coredns:${COREDNS_TAG}
 docker image tag opcal-coredns:${TAG_VERSION} ${CI_REGISTRY}/opcal/opcal-coredns:latest
 docker push ${CI_REGISTRY}/opcal/opcal-coredns:${COREDNS_TAG}

@@ -21,10 +21,13 @@ jobs:
       - name: Docker build & push
         env:
           PROJECT_VERSION: 1.0.0
+          TAG_VERSION: ${{ github.run.number }}
           CI_DEPLOY_USER: ${{ secrets.CR_NAME }}
           CI_DEPLOY_PASSWORD: ${{ secrets.CR_PAT }}
           CI_REGISTRY: ghcr.io
+          PROJECT_DIR: ${{ github.workspace }}
         run: |
-          sudo apt update && sudo apt install curl &&
-          chmod +x build-bin/build-sample.sh &&
+          sudo apt update && sudo apt install curl
+          echo ${CI_DEPLOY_PASSWORD} | docker login ${CI_REGISTRY} -u ${CI_DEPLOY_USER} --password-stdin
+          chmod +x build-bin/build-sample.sh
           build-bin/build-sample.sh

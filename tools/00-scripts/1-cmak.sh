@@ -11,7 +11,7 @@ CMAK_VERSION=$(curl https://api.github.com/repos/yahoo/CMAK/releases/latest | gr
 docker build \
     --build-arg CMAK_VERSION=${CMAK_VERSION} \
     -t cmak:${TAG_VERSION} \
-    -f ${GITHUB_WORKSPACE}/tools/CMAK/Dockerfile . --no-cache
+    -f ${PROJECT_DIR}/tools/CMAK/Dockerfile . --no-cache
 docker image tag cmak:${TAG_VERSION} ${CI_REGISTRY}/opcal/cmak:${CMAK_VERSION}
 docker image tag cmak:${TAG_VERSION} ${CI_REGISTRY}/opcal/cmak:latest
 docker push ${CI_REGISTRY}/opcal/cmak:${CMAK_VERSION}
