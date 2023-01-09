@@ -11,7 +11,6 @@ on:
       - ".github/workflows/sample.yaml"
       - "build-bin/build-sample.sh"
 
-
 jobs:
   images-build:
     runs-on: ubuntu-latest
