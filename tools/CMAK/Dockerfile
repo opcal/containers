@@ -10,7 +10,7 @@ RUN apt update && apt install unzip -y \
 
 FROM ghcr.io/opcal/eclipse-temurin:11-jre
 
-LABEL Author="OPCAL"
+LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
 COPY --from=build /cmak /cmak
 

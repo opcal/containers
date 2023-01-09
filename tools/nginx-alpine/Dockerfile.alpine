@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-LABEL Author="OPCAL"
+LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
 RUN apk update && apk --no-cache add logrotate \
     && rm -rf /var/cache/apk/*

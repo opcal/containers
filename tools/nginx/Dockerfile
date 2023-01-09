@@ -1,6 +1,6 @@
 FROM nginx:latest
 
-LABEL Author="OPCAL"
+LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update && apt-get -y install logrotate cron \

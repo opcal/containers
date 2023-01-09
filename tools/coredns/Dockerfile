@@ -23,7 +23,7 @@ RUN make
 
 FROM scratch
 
-LABEL Author="OPCAL"
+LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
 WORKDIR /
 
