@@ -1,7 +1,8 @@
 FROM --platform=${TARGETPLATFORM} golang:latest AS build
 
-RUN apt-get update && apt-get -uy upgrade
-RUN apt-get -y install git ca-certificates libcap2-bin ; \
+RUN apt-get update; \
+    apt-get -uy upgrade; \
+    apt-get -y install git ca-certificates libcap2-bin ; \
     update-ca-certificates
 
 WORKDIR /build
@@ -14,14 +15,12 @@ WORKDIR /build/coredns
 
 ENV CGO_ENABLED=0
 
-RUN sed -i '/^forward:forward.*/i alternate:github.com/coredns/alternate' plugin.cfg
-
-RUN go get github.com/coredns/alternate
-RUN go generate coredns.go
-RUN go mod tidy -compat=1.17
-
-RUN make
-RUN setcap cap_net_bind_service=+ep /build/coredns/coredns
+RUN sed -i '/^forward:forward.*/i alternate:github.com/coredns/alternate' plugin.cfg \
+    go get github.com/coredns/alternate \
+    go generate coredns.go \
+    go mod tidy -compat=1.17 \
+    make \
+    setcap cap_net_bind_service=+ep /build/coredns/coredns
 
 FROM --platform=${TARGETPLATFORM} scratch
 # FROM --platform=${TARGETPLATFORM} gcr.io/distroless/static-debian11:nonroot
