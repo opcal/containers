@@ -1,7 +1,8 @@
 FROM --platform=${TARGETPLATFORM} golang:latest AS build
 
 RUN apt-get update && apt-get -uy upgrade
-RUN apt-get -y install git ca-certificates && update-ca-certificates
+RUN apt-get -y install git ca-certificates libcap2-bin ; \
+    update-ca-certificates
 
 WORKDIR /build
 
