@@ -18,9 +18,10 @@ ENV CGO_ENABLED=0
 RUN sed -i '/^forward:forward.*/i alternate:github.com/coredns/alternate' plugin.cfg ; \
     go get github.com/coredns/alternate ; \
     go generate coredns.go ; \
-    go mod tidy -compat=1.17 ; \
     make ; \
     setcap cap_net_bind_service=+ep /build/coredns/coredns
+
+# go mod tidy -compat=1.17 ; \
 
 FROM --platform=${TARGETPLATFORM} scratch
 # FROM --platform=${TARGETPLATFORM} gcr.io/distroless/static-debian11:nonroot
