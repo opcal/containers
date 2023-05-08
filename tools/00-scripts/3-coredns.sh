@@ -11,7 +11,7 @@ export COREDNS_TAG=$(curl https://api.github.com/repos/coredns/coredns/releases/
 echo ${COREDNS_TAG}
 
 docker buildx build \
-    --platform linux/amd64,linux/arm64,linux/arm/v7,linux/mips64le,linux/ppc64le,linux/s390x \
+    --platform linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/s390x \
     --build-arg COREDNS_TAG  \
     --push \
     -t ${CI_REGISTRY}/opcal/opcal-coredns:${COREDNS_TAG} \
