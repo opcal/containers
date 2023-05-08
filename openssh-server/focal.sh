@@ -15,7 +15,7 @@ docker buildx build \
     --push \
     -t ${CI_REGISTRY}/opcal/openssh-server:focal-${LATEST_VERSION} \
     -t ${CI_REGISTRY}/opcal/openssh-server:focal \
-    -f ${PROJECT_DIR}/tools/openssh-server/base/Dockerfile . --no-cache
+    -f ${PROJECT_DIR}/openssh-server/base/Dockerfile . --no-cache
 
 echo 'build openssh-server-focal finished'
 echo " "

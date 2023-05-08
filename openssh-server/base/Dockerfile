@@ -16,7 +16,7 @@ RUN set -eux; \
     && sed -ri 's/#Port\s+.*/Port 2222/g' /etc/ssh/sshd_config \
     && sed -ri 's/#PasswordAuthentication\s+.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 
-COPY ${WORKSPACE}/tools/openssh-server/base/entrypoint.sh /
+COPY ${WORKSPACE}/openssh-server/base/entrypoint.sh /
 
 EXPOSE 2222
 
