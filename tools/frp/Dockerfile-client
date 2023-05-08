@@ -3,7 +3,7 @@ FROM --platform=${TARGETPLATFORM} ghcr.io/opcal/alpine:latest AS builder
 ARG FRP_VERSION
 
 RUN set -eux; \
-	apk --no-cache add curl tar unzip; \
+	apk --no-cache add dpkg curl tar unzip; \
     dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')"; \
     curl -L https://github.com/fatedier/frp/releases/download/${FRP_VERSION}/frp_$(echo $FRP_VERSION | cut -d 'v' -f 2)_linux_${dpkgArch}.tar.gz -o /tmp/frp.tar.gz ; \
     tar -xvzf /tmp/frp.tar.gz -C / ; \
