@@ -14,7 +14,7 @@ docker buildx build \
     --push \
     -t ${CI_REGISTRY}/opcal/frps:${FRP_VERSION} \
     -t ${CI_REGISTRY}/opcal/frps:latest \
-    -f ${PROJECT_DIR}/tools/frp/Dockerfile-server . --no-cache
+    -f ${PROJECT_DIR}/frp/Dockerfile-server . --no-cache
 
 docker buildx build \
     --platform linux/amd64,linux/arm64 \
@@ -22,7 +22,7 @@ docker buildx build \
     --push \
     -t ${CI_REGISTRY}/opcal/frpc:${FRP_VERSION} \
     -t ${CI_REGISTRY}/opcal/frpc:latest \
-    -f ${PROJECT_DIR}/tools/frp/Dockerfile-client . --no-cache
+    -f ${PROJECT_DIR}/frp/Dockerfile-client . --no-cache
 
 echo 'build frp finished'
 echo " "
