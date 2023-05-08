@@ -7,7 +7,7 @@ RUN set -eux; \
     dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')"; \
     curl -L https://github.com/fatedier/frp/releases/download/${FRP_VERSION}/frp_$(echo $FRP_VERSION | cut -d 'v' -f 2)_linux_${dpkgArch}.tar.gz -o /tmp/frp.tar.gz ; \
     tar -xvzf /tmp/frp.tar.gz -C / ; \
-    ln -s /frp_$(echo $FRP_VERSION | cut -d 'v' -f 2)_linux_amd64 /frp ; \
+    ln -s /frp_$(echo $FRP_VERSION | cut -d 'v' -f 2)_linux_${dpkgArch} /frp ; \
     chmod -R 777 /frp/frps
 
 FROM --platform=${TARGETPLATFORM} ghcr.io/opcal/alpine:latest
