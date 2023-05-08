@@ -10,11 +10,13 @@ export COREDNS_TAG=$(curl https://api.github.com/repos/coredns/coredns/releases/
 
 echo ${COREDNS_TAG}
 
-docker build --build-arg COREDNS_TAG -t opcal-coredns:${TAG_VERSION} -f ${PROJECT_DIR}/tools/coredns/Dockerfile . --no-cache
-docker image tag opcal-coredns:${TAG_VERSION} ${CI_REGISTRY}/opcal/opcal-coredns:${COREDNS_TAG}
-docker image tag opcal-coredns:${TAG_VERSION} ${CI_REGISTRY}/opcal/opcal-coredns:latest
-docker push ${CI_REGISTRY}/opcal/opcal-coredns:${COREDNS_TAG}
-docker push ${CI_REGISTRY}/opcal/opcal-coredns:latest
+docker buildx build \
+    --platform linux/amd64,linux/arm64,linux/arm/v7,linux/mips64le,linux/ppc64le,linux/s390x \
+    --build-arg COREDNS_TAG  \
+    --push \
+    -t ${CI_REGISTRY}/opcal/opcal-coredns:${COREDNS_TAG} \
+    -t ${CI_REGISTRY}/opcal/opcal-coredns:latest \
+    -f ${PROJECT_DIR}/tools/coredns/Dockerfile . --no-cache
 
 echo 'build opcal-coredns finished'
 echo " "
