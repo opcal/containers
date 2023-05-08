@@ -15,11 +15,11 @@ WORKDIR /build/coredns
 
 ENV CGO_ENABLED=0
 
-RUN sed -i '/^forward:forward.*/i alternate:github.com/coredns/alternate' plugin.cfg \
-    go get github.com/coredns/alternate \
-    go generate coredns.go \
-    go mod tidy -compat=1.17 \
-    make \
+RUN sed -i '/^forward:forward.*/i alternate:github.com/coredns/alternate' plugin.cfg ; \
+    go get github.com/coredns/alternate ; \
+    go generate coredns.go ; \
+    go mod tidy -compat=1.17 ; \
+    make ; \
     setcap cap_net_bind_service=+ep /build/coredns/coredns
 
 FROM --platform=${TARGETPLATFORM} scratch
