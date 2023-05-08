@@ -5,17 +5,13 @@ RUN apt-get update; \
     apt-get -y install git ca-certificates libcap2-bin ; \
     update-ca-certificates
 
-WORKDIR /build
-
-ARG COREDNS_TAG
-
-RUN git clone -b ${COREDNS_TAG} --single-branch https://github.com/coredns/coredns.git
-
 WORKDIR /build/coredns
 
 ENV CGO_ENABLED=0
+ARG COREDNS_TAG
 
-RUN sed -i '/^forward:forward.*/i alternate:github.com/coredns/alternate' plugin.cfg ; \
+RUN git clone -b ${COREDNS_TAG} --single-branch https://github.com/coredns/coredns.git ; \
+    sed -i '/^forward:forward.*/i alternate:github.com/coredns/alternate' plugin.cfg ; \
     go get github.com/coredns/alternate ; \
     go generate coredns.go ; \
     make ; \
