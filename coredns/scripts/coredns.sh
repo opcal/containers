@@ -6,7 +6,7 @@ echo " "
 echo " "
 echo 'build coredns start'
 
-export COREDNS_TAG=$(curl https://api.github.com/repos/coredns/coredns/releases/latest | grep tag_name | cut -d '"' -f 4)
+export COREDNS_TAG=$(curl https://api.github.com/repos/coredns/coredns/releases/latest | jq | grep tag_name | cut -d '"' -f 4)
 
 echo ${COREDNS_TAG}
 

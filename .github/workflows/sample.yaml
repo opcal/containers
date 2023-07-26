@@ -31,6 +31,6 @@ jobs:
           CI_REGISTRY: ghcr.io
           PROJECT_DIR: ${{ github.workspace }}
         run: |
-          sudo apt update && sudo apt install curl
+          sudo apt update && sudo apt install curl jq
           chmod +x build-bin/build-sample.sh
           build-bin/build-sample.sh

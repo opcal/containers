@@ -6,7 +6,7 @@ echo " "
 echo " "
 echo 'build sentinel-dashboard start'
 
-export SENTINEL_VERSION=$(curl https://api.github.com/repos/alibaba/Sentinel/releases/latest | grep tag_name | cut -d '"' -f 4)
+export SENTINEL_VERSION=$(curl https://api.github.com/repos/alibaba/Sentinel/releases/latest | jq | grep tag_name | cut -d '"' -f 4)
 
 docker build --build-arg SENTINEL_VERSION -t sentinel-dashboard:${TAG_VERSION} -f ${PROJECT_DIR}/sample/alibaba/sentinel-dashboard/Dockerfile . --no-cache
 docker image tag sentinel-dashboard:${TAG_VERSION} ${CI_REGISTRY}/opcal/sentinel-dashboard:${SENTINEL_VERSION}
