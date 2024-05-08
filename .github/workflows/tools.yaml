@@ -10,7 +10,7 @@ on:
     paths:
       - "tools/**"
       - ".github/workflows/tools.yaml"
-      - "ci/build-tools.sh"
+      - ".ci/build-tools.sh"
 
 jobs:
   images-build:
@@ -36,5 +36,5 @@ jobs:
           PROJECT_DIR: ${{ github.workspace }}
         run: |
           sudo apt update && sudo apt install curl jq
-          chmod +x ci/build-tools.sh
-          ci/build-tools.sh
+          chmod +x .ci/build-tools.sh
+          .ci/build-tools.sh

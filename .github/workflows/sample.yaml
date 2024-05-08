@@ -10,7 +10,7 @@ on:
     paths:
       - "sample/**"
       - ".github/workflows/sample.yaml"
-      - "ci/build-sample.sh"
+      - ".ci/build-sample.sh"
 
 jobs:
   images-build:
@@ -32,5 +32,5 @@ jobs:
           PROJECT_DIR: ${{ github.workspace }}
         run: |
           sudo apt update && sudo apt install curl jq
-          chmod +x ci/build-sample.sh
-          ci/build-sample.sh
+          chmod +x .ci/build-sample.sh
+          .ci/build-sample.sh
