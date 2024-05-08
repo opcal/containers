@@ -10,7 +10,6 @@ on:
     paths:
       - "coredns/**"
       - ".github/workflows/coredns.yaml"
-      - "build-bin/build-coredns.sh"
 
 jobs:
   images-build:
@@ -36,5 +35,5 @@ jobs:
           PROJECT_DIR: ${{ github.workspace }}
         run: |
           sudo apt update && sudo apt install curl jq
-          chmod +x build-bin/build-coredns.sh
-          build-bin/build-coredns.sh
+          chmod +x coredns/coredns.sh
+          coredns/coredns.sh
