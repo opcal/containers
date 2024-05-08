@@ -11,7 +11,7 @@ FROM --platform=${TARGETPLATFORM} ghcr.io/opcal/alpine:latest
 
 WORKDIR /app
 
-RUN adduser -d /app -u 1001 -g '' endlessh
+RUN adduser -d /app -u 1001 -g '' -D endlessh
 
 COPY --from=builder --chown=${1001} /app/endlessh /app/
 COPY --chown=${1001} ${PROJECT_DIR}/endlessh/config /app/
