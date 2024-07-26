@@ -16,7 +16,7 @@ ARG SENTINEL_VERSION
 
 RUN curl https://github.com/alibaba/Sentinel/releases/download/${SENTINEL_VERSION}/sentinel-dashboard-${SENTINEL_VERSION}.jar -L -o sentinel-dashboard.jar
 
-COPY ${PROJECT_DIR}/sample/alibaba/sentinel-dashboard/docker-entrypoint.sh /
+COPY sample/alibaba/sentinel-dashboard/docker-entrypoint.sh /
 
 EXPOSE 8080
 

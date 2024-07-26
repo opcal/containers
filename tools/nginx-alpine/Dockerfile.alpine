@@ -5,9 +5,9 @@ LABEL org.opencontainers.image.authors="opcal@outlook.com"
 RUN apk update && apk --no-cache add logrotate \
     && rm -rf /var/cache/apk/*
 
-COPY ${PROJECT_DIR}/tools/nginx-alpine/conf/nginx-alpine.sh /nginx-alpine.sh
-COPY ${PROJECT_DIR}/tools/nginx-alpine/conf/nginx-crontab /nginx-crontab
-COPY ${PROJECT_DIR}/tools/nginx-alpine/conf/nginx-data-logrotate /etc/nginx/
+COPY tools/nginx-alpine/conf/nginx-alpine.sh /nginx-alpine.sh
+COPY tools/nginx-alpine/conf/nginx-crontab /nginx-crontab
+COPY tools/nginx-alpine/conf/nginx-data-logrotate /etc/nginx/
 
 RUN chmod 0644 /etc/nginx/nginx-data-logrotate; \
     chmod a+x /nginx-alpine.sh; \
