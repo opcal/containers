@@ -2,8 +2,8 @@
 
 set -e
 
-groupadd -r ${USER_NAME} --gid=1000; \
-useradd -r -g ${USER_NAME} --uid=1000 -s "/bin/bash" -m ${USER_NAME}; \
+groupadd -r ${USER_NAME} --gid=1001; \
+useradd -r -g ${USER_NAME} --uid=1001 -s "/bin/bash" -m ${USER_NAME}; \
 
 if [[ ! -z "${USER_PASSWORD}" ]]; then
     echo "${USER_NAME}:${USER_PASSWORD}" | chpasswd
