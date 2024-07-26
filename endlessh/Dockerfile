@@ -13,8 +13,8 @@ WORKDIR /app
 
 RUN adduser -u 1001 -h /app -g '' -D endlessh
 
-COPY --from=builder --chown=${1001} /app/endlessh /app/
-COPY --chown=${1001} endlessh/config /app/
+COPY --from=builder --chown=1001 /app/endlessh /app/
+COPY --chown=1001 endlessh/config /app/
 
 EXPOSE 2222/tcp
 USER 1001
