@@ -5,8 +5,8 @@ LABEL org.opencontainers.image.authors="opcal@outlook.com"
 WORKDIR /app
 
 RUN set -eux; \
-    groupadd -r opcal --gid=1000; \
-    useradd -r -g opcal --uid=1000 -m -d /app opcal; \
+    groupadd -r opcal --gid=1001; \
+    useradd -r -g opcal --uid=1001 -m -d /app opcal; \
     chown -R  opcal:opcal "/app"; \
     mkdir -p /data; \
     chown -R  opcal:opcal "/data"; \
