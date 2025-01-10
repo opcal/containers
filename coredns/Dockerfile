@@ -8,7 +8,10 @@ ARG COREDNS_TAG
 RUN set -eux; \
     apt-get update; \
     apt-get -uy upgrade; \
-    apt-get -y install git ca-certificates libcap2-bin ; \
+    apt-get -y install \
+        ca-certificates \
+        git \
+        libcap2-bin ; \
     update-ca-certificates; \
     git clone -b ${COREDNS_TAG} --single-branch https://github.com/coredns/coredns.git . ; \
     sed -i '/^forward:forward.*/i alternate:github.com/coredns/alternate' plugin.cfg ; \
@@ -19,7 +22,7 @@ RUN set -eux; \
 
 # go mod tidy -compat=1.17 ; \
 
-FROM --platform=${TARGETPLATFORM} scratch
+FROM --platform=${TARGETPLATFORM} ghcr.io/opcal/ubuntu:noble
 # FROM --platform=${TARGETPLATFORM} gcr.io/distroless/static-debian11:nonroot
 
 LABEL org.opencontainers.image.authors="opcal@outlook.com"
