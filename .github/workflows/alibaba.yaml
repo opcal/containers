@@ -1,4 +1,4 @@
-name: build-frp-images
+name: build-alibaba-images
 
 on:
   workflow_dispatch:
