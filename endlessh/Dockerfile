@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM} ghcr.io/opcal/alpine:latest AS builder
+FROM ghcr.io/opcal/alpine:latest AS builder
 
 WORKDIR /app
 
@@ -7,7 +7,7 @@ RUN RUN set -eux; \
     git clone https://github.com/skeeto/endlessh.git . ; \
     make
 
-FROM --platform=${TARGETPLATFORM} ghcr.io/opcal/alpine:latest
+FROM ghcr.io/opcal/alpine:latest
 
 WORKDIR /app
 

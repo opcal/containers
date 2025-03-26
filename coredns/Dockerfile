@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM} golang:latest AS build
+FROM golang:latest AS build
 
 WORKDIR /build/coredns
 
@@ -22,8 +22,7 @@ RUN set -eux; \
 
 # go mod tidy -compat=1.17 ; \
 
-FROM --platform=${TARGETPLATFORM} ghcr.io/opcal/ubuntu:noble
-# FROM --platform=${TARGETPLATFORM} gcr.io/distroless/static-debian11:nonroot
+FROM ghcr.io/opcal/ubuntu:noble
 
 LABEL org.opencontainers.image.authors="opcal@outlook.com"
 

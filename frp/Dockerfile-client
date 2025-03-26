@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM} ghcr.io/opcal/alpine:latest AS builder
+FROM ghcr.io/opcal/alpine:latest AS builder
 
 ARG FRP_VERSION
 
@@ -10,7 +10,7 @@ RUN set -eux; \
     ln -s /frp_$(echo $FRP_VERSION | cut -d 'v' -f 2)_linux_${dpkgArch} /frp ; \
     chmod -R 777 /frp/frpc
 
-FROM --platform=${TARGETPLATFORM} ghcr.io/opcal/alpine:latest
+FROM ghcr.io/opcal/alpine:latest
 
 WORKDIR /app
 

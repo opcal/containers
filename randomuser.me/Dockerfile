@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM} ghcr.io/opcal/alpine:latest AS builder
+FROM ghcr.io/opcal/alpine:latest AS builder
 
 ARG RUSERME_VERSION
 
