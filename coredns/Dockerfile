@@ -22,7 +22,7 @@ RUN set -eux; \
 
 # go mod tidy -compat=1.17 ; \
 
-FROM ghcr.io/opcal/ubuntu:noble
+FROM ghcr.io/opcal/ubuntu:resolute
 
 LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
